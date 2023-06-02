@@ -1,0 +1,41 @@
+﻿@page
+@model WebMVC.Views.Shared._HeaderPartialModel
+
+@{
+    Layout = null;
+}
+
+<header>
+    <div class="container">
+        @Html.ActionLink("Fixxo.", "Index", "Home", null, new { id = "logotype" })
+
+        <div id="menu" class="@((Model.HideMenu) ? "hide" : "")">
+            <nav class="menu-links links">
+                @Html.ActionLink("Home", "Index", "Home", null, new { @class = "link" })
+                @Html.ActionLink("Products", "Products", "Home", null, new { @class = "link" })
+                @Html.ActionLink("Contacts", "Contacts", "Home", null, new { @class = "link" })
+            </nav>
+
+            <nav class="menu-icons icons">
+                <a href="/search" class="link"><i class="fa-regular fa-search"></i></a>
+                <a href="/compare" class="link"><i class="fa-regular fa-code-compare"></i></a>
+                <a href="/favorites" class="link"><i class="fa-regular fa-heart"></i></a>
+                <a href="/cart" class="link"><i class="fa-regular fa-bag-shopping"></i></a>
+                <a href="/account" class="link ms-5"><i class="fa-regular fa-user"></i></a>
+            </nav>
+        </div>
+
+        <div id="toggle-icon" class="icons">
+            <button onclick="toggleMenu()" class="link"><i class="fa-regular fa-bars"></i></button>
+        </div>
+    </div>
+</header>
+
+@section scripts {
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            menu.classList.toggle("hide");
+        }
+    </script>
+}

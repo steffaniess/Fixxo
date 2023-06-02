@@ -1,0 +1,44 @@
+﻿@model ContactViewModel
+
+<section class="breadcrumb">
+    <div class="container">
+        <ul>
+            <li>
+                <a class="menu-link" asp-controller="Home" asp-action="Index">HOME</a>
+            </li>
+            <li class="active">Contacts</li>
+        </ul>
+    </div>
+</section>
+
+
+<section class="contact-form">
+    <div class="container">
+        <h1>Contact us</h1>
+
+        <form method="post" novalidate>
+            <div class="contact-form-name">
+                <input asp-for="Name" placeholder="Your Name" />
+                <span asp-validation-for="Name" class="error"></span>
+            </div>
+
+            <div class="contact-form-email">
+                <input asp-for="Email" placeholder="Your Mail">
+                <span asp-validation-for="Email" class="error"></span>
+            </div>
+
+            <div class="contact-form-comments">
+                <textarea asp-for="Comment" placeholder="Comments"></textarea>
+                <span asp-validation-for="Comment" class="error"></span>
+            </div>
+
+            <button class="btn-theme" type="submit">Send</button>
+            @if (ViewBag.IsSent != null && ViewBag.IsSent)
+            {
+                <div class="alert alert-success text-center">
+                    <p>Your comment has been sent</p>
+                </div>
+            }
+        </form>
+    </div>
+</section>
